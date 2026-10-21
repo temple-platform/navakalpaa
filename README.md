@@ -2,23 +2,25 @@
 
 The corporate site for `https://navakalpaa.com`. Plain HTML, CSS and vanilla JavaScript. There is no build step, no backend, no database, no paid API and no analytics.
 
-This folder is self-contained: it is the whole site. It lives in `website/` because this repository also holds the Setu pilot, and the Setu code, specs and infrastructure must not be published with the site.
+This repository is the whole site. It is deployed to Cloudflare Pages from the repository root, so everything committed here is publicly served. Do not commit internal notes, specs or credentials.
 
 ## What is here
 
 | Path | What |
 |---|---|
-| `index.html` | Home: hero, approach, Setu, beyond the first product, closing |
-| `about.html` | About: philosophy, principles, how we build, our mark |
-| `products.html` | Setu as the first product, room for future products |
+| `index.html` | Home: hero, purpose and principles, Setu, beyond the first product, closing |
+| `about.html` | About: purpose, what we do, approach (three principles), our mark |
+| `products.html` | Setu as the first product, plus the areas we build in (technology products, SaaS solutions, software services) |
 | `contact.html` | Contact page (no form; opens the visitor's email app) |
+| `privacy.html` | Privacy Policy for this corporate website only |
+| `terms.html` | Terms of Use for this corporate website only |
 | `404.html` | Branded not-found page (uses root-relative links, see below) |
 | `css/styles.css` | Design tokens (`:root` custom properties) and all components |
 | `js/site.config.js` | Company name, domain, tagline and contact email |
 | `js/main.js` | Mobile menu, config injection, reveal on scroll |
 | `assets/logo/` | The Navakalpaa logo kit (SVG, see below) |
 | `assets/icons/` | Touch icon and app icons (PNG) |
-| `assets/img/` | `setu-app-screen.webp` (the supplied Setu screenshot, cropped) and `og-image.png` |
+| `assets/img/` | `setu-app-screen.webp` (the supplied Setu screenshot, cropped) and `og-image.png` (1200x630 social preview, composed from the logo and hero artwork) |
 | `assets/fonts/` | Newsreader and Figtree, self-hosted (SIL Open Font License, licences included) |
 | `favicon.svg`, `favicon.ico` | Symbol-only favicon |
 | `_headers` | Cloudflare Pages security and cache headers |
@@ -29,11 +31,10 @@ This folder is self-contained: it is the whole site. It lives in `website/` beca
 From the repository root:
 
 ```bash
-cd website
 python3 -m http.server 8000
 ```
 
-Open <http://localhost:8000>. Any static server works (`npx serve`, `php -S localhost:8000`). Use a server rather than opening files from disk: some browsers block fonts loaded from `file://`, and `404.html` uses root-relative links.
+Open <http://localhost:8000>. Any static server works (`npx serve`, `php -S localhost:8000`). Use a server rather than opening files from disk: some browsers block fonts loaded from `file://`, and `404.html` uses root-relative links. A plain static server does not apply `_headers` or clean URLs (`/about`), so the Content Security Policy is only enforced on Cloudflare Pages.
 
 ## Deploy to Cloudflare Pages
 
@@ -44,18 +45,24 @@ Cloudflare Pages needs no build command. In the dashboard choose **Workers & Pag
 | Production branch | the branch you publish from |
 | Framework preset | None |
 | Build command | leave empty |
-| Build output directory | `website` |
+| Build output directory | leave empty (repository root) |
 | Root directory | leave empty (repository root) |
 
-Then add the custom domain `navakalpaa.com` under **Custom domains**.
-
-If the site later moves to its own repository, copy the contents of `website/` to that repository's root and set the build output directory to `/` (or leave it empty).
+Custom domains: `navakalpaa.com` and `www.navakalpaa.com`. All canonical URLs use `https://navakalpaa.com`; redirecting `www` to the apex domain is a Cloudflare setting, not part of this repository.
 
 Notes on how Cloudflare Pages behaves:
 
 - Pages serves `about.html` at `/about` and redirects `/about.html` to it. The canonical URLs, `sitemap.xml` and Open Graph URLs therefore use the clean form (`https://navakalpaa.com/about`). Relative links between pages (`about.html`) work both locally and on Pages.
 - Pages serves `404.html` for every unknown path, including nested ones such as `/a/b`. That page uses root-relative URLs (`/css/styles.css`) so it renders correctly at any depth. It carries `noindex` and no canonical URL, because it answers many different addresses.
 - `_headers` sets a strict Content Security Policy (`'self'` only). The site has no inline scripts or inline `style` attributes; keep it that way, or relax the policy deliberately.
+
+## Adding a product or offering
+
+Setu keeps its own saffron identity in the `section.setu-band` block on `products.html`. For another product, copy that block, give it its own heading id and identity, and keep the Navakalpaa corporate styling elsewhere. For a short list entry rather than a full showcase, add a card to the `ul.offerings` on `products.html`: `<li class="offering"><h3>Name</h3><p>One honest sentence.</p></li>`. The grid is `auto-fit`, so cards re-flow without CSS changes. Add the new page or anchor to `sitemap.xml` if it is a new URL, and describe only what exists today: no invented features, dates, pricing or customer claims.
+
+## Privacy and legal pages
+
+`privacy.html` and `terms.html` describe the actual behaviour of this site: no forms, no analytics, no cookies or browser storage set by the pages, no third-party requests, self-hosted fonts, hosting by Cloudflare Pages. If any of that changes (analytics, a form, an embed, a new script), update `privacy.html`, the Content Security Policy in `_headers` and the "Last updated" date in the same change. Both pages need legal review before they are relied on.
 
 ## Configuration
 
@@ -74,8 +81,8 @@ window.NAVAKALPAA_SITE = {
 ```
 
 - **Name, short name, tagline and domain** fill every element with a matching `data-site` attribute (`data-site="name"`, `"short-name"`, `"tagline"`, `"domain"`), and replace the default name in the page title and meta tags.
-- **Contact email** is intentionally empty, so no address or mailto link is published. Set it and the contact page, the home page closing section and every `data-mailto` link switch on, including a copy button. While it is empty the contact page shows a short "coming soon" note.
-- The static HTML already contains the default name, so search engines and visitors without JavaScript see correct text. If the legal name ever changes, update `site.config.js` and search-and-replace the name in the `<title>`, meta and Open Graph tags, `sitemap.xml`, `site.webmanifest` and the logo `<title>` elements.
+- **Contact email** is intentionally empty, so no address or mailto link is published. Set it and the contact page, the Privacy Policy and Terms contact lines, the home page closing section and every `data-mailto` link switch on, including a copy button. While it is empty the contact page and legal pages show a short "will be published soon" note.
+- The static HTML already contains the default name, so search engines and visitors without JavaScript see correct text. Page titles use the short brand form `Navakalpaa Tech`. If the legal name ever changes, update `site.config.js` and search-and-replace the name in the meta and Open Graph tags, `sitemap.xml`, `site.webmanifest` and the logo `<title>` elements.
 - Colours, type scale, spacing, radii and motion curves are CSS custom properties at the top of `css/styles.css`.
 
 ## Logo kit
@@ -100,6 +107,7 @@ Setu keeps its own identity. Its logo is not redrawn here; the only Setu artwork
 
 - `contactEmail` in `js/site.config.js` (no address was supplied).
 - There is no public Setu URL, so every Setu call to action points to the local `products.html#setu` section. Change those links when one exists.
+- Privacy Policy and Terms of Use: confirm the contact route, retention practice, Cloudflare feature set and governing-law wording with legal review, then update the "Last updated" date.
 - The Setu screenshot is described as a preview of an app in development. Update the caption and the "In development" labels when Setu launches.
 
 ## Checks worth repeating after edits
