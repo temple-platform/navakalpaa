@@ -11,6 +11,7 @@ This repository is the whole site. It is deployed to Cloudflare Pages from the r
 | `index.html` | Home: hero, purpose and principles, Setu, beyond the first product, closing |
 | `about.html` | About: purpose, what we do, approach (three principles), our mark |
 | `products.html` | Setu as the first product, plus the areas we build in (technology products, SaaS solutions, software services) |
+| `setu.html` | Setu, the temple management software: screens, what they show, and how the product relates to Navakalpaa |
 | `contact.html` | Contact page (no form; opens the visitor's email app) |
 | `privacy.html` | Privacy Policy for this corporate website only |
 | `terms.html` | Terms of Use for this corporate website only |
@@ -20,7 +21,7 @@ This repository is the whole site. It is deployed to Cloudflare Pages from the r
 | `js/main.js` | Mobile menu, config injection, reveal on scroll |
 | `assets/logo/` | The Navakalpaa logo kit (SVG, see below) |
 | `assets/icons/` | Touch icon and app icons (PNG) |
-| `assets/img/` | `setu-app-screen.webp` (the supplied Setu screenshot, cropped) and `og-image.png` (1200x630 social preview, composed from the logo and hero artwork) |
+| `assets/img/` | Setu screenshots (`setu-devotee-seva-booking.webp`, `setu-new-booking.webp`, `setu-temple-dashboard.webp`), `og-setu.jpg` (1200x630 Setu social preview) and `og-image.png` (1200x630 company social preview) |
 | `assets/fonts/` | Newsreader and Figtree, self-hosted (SIL Open Font License, licences included) |
 | `favicon.svg`, `favicon.ico` | Symbol-only favicon |
 | `_headers` | Cloudflare Pages security and cache headers |
@@ -54,11 +55,11 @@ Notes on how Cloudflare Pages behaves:
 
 - Pages serves `about.html` at `/about` and redirects `/about.html` to it. The canonical URLs, `sitemap.xml` and Open Graph URLs therefore use the clean form (`https://navakalpaa.com/about`). Relative links between pages (`about.html`) work both locally and on Pages.
 - Pages serves `404.html` for every unknown path, including nested ones such as `/a/b`. That page uses root-relative URLs (`/css/styles.css`) so it renders correctly at any depth. It carries `noindex` and no canonical URL, because it answers many different addresses.
-- `_headers` sets a strict Content Security Policy (`'self'` only). The site has no inline scripts or inline `style` attributes; keep it that way, or relax the policy deliberately.
+- `_headers` sets a strict Content Security Policy (`script-src 'self'` plus a hash for each inline JSON-LD block). The homepage and `setu.html` are the only pages with an inline script, and it is `type="application/ld+json"`. There are no inline event handlers or `style` attributes. If you edit a JSON-LD block, recompute its SHA-256 (base64) and update the matching hash in `_headers`. Do not add `'unsafe-inline'`.
 
 ## Adding a product or offering
 
-Setu keeps its own saffron identity in the `section.setu-band` block on `products.html`. For another product, copy that block, give it its own heading id and identity, and keep the Navakalpaa corporate styling elsewhere. For a short list entry rather than a full showcase, add a card to the `ul.offerings` on `products.html`: `<li class="offering"><h3>Name</h3><p>One honest sentence.</p></li>`. The grid is `auto-fit`, so cards re-flow without CSS changes. Add the new page or anchor to `sitemap.xml` if it is a new URL, and describe only what exists today: no invented features, dates, pricing or customer claims.
+Setu has its own page at `setu.html` (canonical `https://navakalpaa.com/setu`) and a shorter block on `products.html`. For another product, add a page in the same pattern, link it from `products.html` and the footer, and add the clean production URL to `sitemap.xml`. For a short list entry rather than a full page, add a card to the `ul.offerings` on `products.html`: `<li class="offering"><h3>Name</h3><p>One honest sentence.</p></li>`. The grid is `auto-fit`, so cards re-flow without CSS changes. Describe only what exists today: no invented features, dates, pricing, partnerships or customer claims. Do not add a page for a service that is not ready to offer, including any future poojari booking service.
 
 ## Privacy and legal pages
 
@@ -101,14 +102,15 @@ The tagline is dropped wherever space is tight, because at small sizes it would 
 
 The favicon (`favicon.svg`, `favicon.ico`) is the N on a cream tile, without the star, with flat colours so it stays clear at 16 px. The touch and app icons keep the star.
 
-Setu keeps its own identity. Its logo is not redrawn here; the only Setu artwork on the site is the supplied app screenshot, shown as provided.
+Setu keeps its own identity. Its logo is not redrawn here. The Setu images are screenshots of the application while it is in development. `setu-temple-dashboard.webp` has the devotee name on the recent booking covered. `setu-devotee-seva-booking.webp` is cropped so the browser address bar is not published, and the temple name and place on that screen are replaced with “Sample temple” and “Sample place” because the original wording was a depiction. The older mock screenshot `setu-app-screen.webp` was removed so it is no longer served.
 
 ## Placeholders still to fill
 
-- `contactEmail` in `js/site.config.js` (no address was supplied).
-- There is no public Setu URL, so every Setu call to action points to the local `products.html#setu` section. Change those links when one exists.
-- Privacy Policy and Terms of Use: confirm the contact route, retention practice, Cloudflare feature set and governing-law wording with legal review, then update the "Last updated" date.
-- The Setu screenshot is described as a preview of an app in development. Update the caption and the "In development" labels when Setu launches.
+- `contactEmail` in `js/site.config.js` (no address was supplied). Until it is set, the contact page, the legal pages and the Setu page say that the address will be published once it is confirmed. Do not invent an address.
+- There is no public Setu sign-up or product URL on this site. Setu calls to action go to `setu.html` or `contact.html`. Do not link the staging hostname that appeared in a screenshot.
+- `www.navakalpaa.com` currently serves the same site as `navakalpaa.com` with a 200, rather than redirecting. Canonical URLs use the apex domain. A redirect from `www` to the apex is a Cloudflare setting, not a file in this repository.
+- Privacy Policy and Terms of Use: confirm the contact route, retention practice, Cloudflare feature set and governing-law wording with legal review. The "Last updated" date is 25 October 2026.
+- Setu is in development. The Setu page describes the supplied screens, and the product path from the Setu platform overview: QR booking, Telugu and English, cash and UPI, and the devotee, counter, admin and poojari roles. It does not publish the internal technology stack, and it does not offer a public poojari-booking service.
 
 ## Checks worth repeating after edits
 
