@@ -27,6 +27,37 @@
 <link rel="preload" href="assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://navakalpaa.com/#organization",
+      "name": "Navakalpaa Tech",
+      "legalName": "Navakalpaa Tech LLP",
+      "alternateName": ["Navakalpaa", "NAVAKALPAA TECH LLP"],
+      "url": "https://navakalpaa.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://navakalpaa.com/assets/icons/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "description": "Navakalpaa Tech LLP builds and launches thoughtful technology products, SaaS applications and software services that simplify everyday problems."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://navakalpaa.com/#website",
+      "name": "Navakalpaa Tech",
+      "url": "https://navakalpaa.com/",
+      "description": "Navakalpaa Tech LLP builds and launches thoughtful technology products, SaaS applications and software services that simplify everyday problems.",
+      "publisher": { "@id": "https://navakalpaa.com/#organization" },
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
 <script src="js/site.config.js"></script>
 <script src="js/main.js" defer></script>
 </head>
@@ -42,7 +73,7 @@
 <div class="nav-wrap" id="site-menu">
 <nav class="site-nav" aria-label="Main">
 <ul>
-<li><a href="about.html">About</a></li><li><a href="products.html">Products</a></li>
+<li><a href="about.html">About</a></li><li><a href="products.html">Products</a></li><li><a href="setu.html">Setu</a></li>
 <li><a class="btn btn--ghost" href="contact.html">Contact <svg class="arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" focusable="false"><path d="M3 9h11M10 4.5L14.5 9L10 13.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
 </ul>
 </nav>
@@ -162,16 +193,13 @@
 <p class="eyebrow">Our first product</p>
 <h2 class="setu-name" id="setu-title">Setu</h2>
 <p class="setu-tag">In development</p>
-<h3 class="h3" id="setu-sub">Helping temples simplify everyday operations and devotee services.</h3>
-<p class="prose">Setu is being built to improve temple workflows and make devotee services easier to manage, bringing temple operations and devotee services together in a simple, modern and reliable way.</p>
-<a class="btn btn--primary" href="products.html#setu">Explore Setu <svg class="arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" focusable="false"><path d="M3 9h11M10 4.5L14.5 9L10 13.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<h3 class="h3" id="setu-sub">Simplifying temple operations and devotee services.</h3>
+<p class="prose">Setu is temple management software in development from Navakalpaa Tech LLP. It is being built so a devotee can book a seva from a temple QR code, in Telugu or English, and so the temple can run that work.</p>
+<a class="btn btn--primary" href="setu.html">Read about Setu <svg class="arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" focusable="false"><path d="M3 9h11M10 4.5L14.5 9L10 13.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </div>
 <figure class="setu-band__phone reveal" data-delay="1">
-<div class="phone">
-<span class="phone__cam" aria-hidden="true"></span>
-<div class="phone__screen"><img src="assets/img/setu-app-screen.webp" width="721" height="1541" alt="Preview of the Setu app: a temple&rsquo;s sevas listed by category, each with a short description, duration, price and a Book button." loading="lazy" decoding="async"></div>
-</div>
-<figcaption class="phone-caption">A preview of the Setu app, currently in development.</figcaption>
+<img src="assets/img/setu-devotee-seva-booking.webp" width="589" height="618" alt="Sample Setu page for a temple. The temple name and place are a depiction. The page lists Abhishekam and Archana with a price and a Book button, and says payments go straight to the temple." loading="lazy" decoding="async">
+<figcaption class="phone-caption">A sample public page in Setu. The temple name and place are a depiction.</figcaption>
 </figure>
 </div>
 </div>
@@ -184,7 +212,7 @@
 <p class="eyebrow">Beyond the first product</p>
 <h2 class="h2" id="beyond-title">One product is a beginning, not a boundary.</h2>
 <div class="prose">
-<p>Navakalpaa is an independent technology company. Setu is where we are starting. We aim to build a growing portfolio of products and software services for meaningful, everyday problems, each with a character of its own.</p>
+<p>Navakalpaa is an independent technology company. <a href="setu.html">Setu</a> is where we are starting. We aim to build a growing portfolio of products and software services for meaningful, everyday problems, each with a character of its own.</p>
 </div>
 <ul class="beyond__list">
 <li><span>01</span>A real problem people live with every day</li>
@@ -244,9 +272,9 @@
 <div class="footer-nav">
 <h2>Our first product</h2>
 <ul>
-<li><a href="products.html#setu">Setu</a></li>
+<li><a href="setu.html">Setu</a></li>
 </ul>
-<small>Helping temples simplify everyday operations and devotee services.</small>
+<small>Temple management software for temple operations and devotee services.</small>
 </div>
 <nav class="footer-nav" aria-label="Legal">
 <h2>Legal</h2>

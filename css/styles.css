@@ -54,7 +54,7 @@
   /* space and layout */
   --gutter: clamp(1.25rem, 4.5vw, 3.5rem);
   --max: 1280px;
-  --section: clamp(2.75rem, 5.5vw, 4.75rem);
+  --section: clamp(2.15rem, 4.2vw, 3.6rem);
   --radius: 14px;
   --radius-pill: 999px;
   --header-h: 76px;
@@ -305,7 +305,7 @@ button { font: inherit; color: inherit; }
 
 /* ---------- approach ---------- */
 .approach { padding-block: var(--section); border-block: 1px solid var(--line); background: var(--ivory); }
-.approach__grid { display: grid; gap: clamp(2rem, 5vw, 4rem); }
+.approach__grid { display: grid; gap: clamp(1.5rem, 3.5vw, 2.75rem); }
 .approach__head .eyebrow { margin-bottom: 1rem; }
 .principles { display: grid; gap: 0; }
 .principle { position: relative; padding-block: 1.5rem; border-top: 1px solid var(--line); }
@@ -337,7 +337,7 @@ button { font: inherit; color: inherit; }
 /* ---------- Setu showcase ---------- */
 .setu-band {
   position: relative; overflow: hidden; isolation: isolate;
-  padding-block: clamp(2.25rem, 4.5vw, 4rem);
+  padding-block: clamp(1.75rem, 3.5vw, 3rem);
   background:
     radial-gradient(70% 90% at 78% 40%, rgba(255, 214, 150, 0.7), transparent 70%),
     linear-gradient(100deg, #fbe9d0 0%, #f7d7ad 55%, #f0c28a 100%);
@@ -345,15 +345,20 @@ button { font: inherit; color: inherit; }
 .setu-band__temple { position: absolute; inset: 0 0 0 auto; width: min(68%, 900px); z-index: -1; color: #a85b2a; opacity: 0.2; display: none; }
 .setu-band__temple svg { position: absolute; right: -2%; bottom: -2%; height: 108%; width: auto; }
 .setu-band__fade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, #fbe9d0 0%, rgba(251, 233, 208, 0.7) 38%, rgba(251, 233, 208, 0) 70%); }
-.setu-band__grid { display: grid; gap: clamp(2rem, 5vw, 3.5rem); align-items: center; }
+.setu-band__grid { display: grid; gap: clamp(1.5rem, 3vw, 2.5rem); align-items: center; }
 .setu-band__copy .eyebrow { margin-bottom: 1.25rem; }
-.setu-name { font-family: var(--font-serif); font-size: clamp(3.5rem, 2.5rem + 5vw, 6rem); font-weight: 500; line-height: 0.95; letter-spacing: -0.03em; color: #946713; }
+.setu-name { font-family: var(--font-serif); font-size: clamp(3.25rem, 2.2rem + 4vw, 5rem); font-weight: 500; line-height: 0.95; letter-spacing: -0.03em; color: #946713; }
 .setu-tag { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.3rem 0.85rem; border: 1px solid rgba(176, 127, 30, 0.45); border-radius: var(--radius-pill); font-size: var(--step--1); font-weight: 600; letter-spacing: 0.04em; color: #7b5611; background: rgba(255, 248, 235, 0.6); }
 .setu-tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--terracotta); }
 .setu-band__copy h3 { margin-top: 1.25rem; max-width: 16em; }
 .setu-band__copy .prose { margin-top: 1rem; color: #5a4331; max-width: 30em; }
 .setu-band__copy .btn { margin-top: 1.5rem; }
 .setu-band__phone { display: flex; flex-direction: column; align-items: center; margin: 0; }
+.setu-band__phone img, .product-feature__phone img {
+  width: min(100%, 420px); height: auto; margin-inline: auto;
+  border-radius: 22px;
+  box-shadow: 0 24px 50px -28px rgba(70, 30, 8, 0.55);
+}
 
 @media (min-width: 760px) { .setu-band__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
 @media (min-width: 900px) {
@@ -378,7 +383,7 @@ button { font: inherit; color: inherit; }
 
 /* ---------- beyond (portfolio) ---------- */
 .beyond { padding-block: var(--section); background: var(--ivory); position: relative; overflow: hidden; }
-.beyond__grid { display: grid; gap: clamp(2rem, 6vw, 4rem); align-items: center; }
+.beyond__grid { display: grid; gap: clamp(1.5rem, 4vw, 2.75rem); align-items: center; }
 .beyond__copy .eyebrow { margin-bottom: 1.25rem; }
 .beyond__copy .prose { margin-top: 1.25rem; }
 .beyond__list { margin-top: 1.5rem; border-top: 1px solid var(--line); max-width: 30em; }
@@ -397,7 +402,7 @@ button { font: inherit; color: inherit; }
 @media (min-width: 760px) { .beyond__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
 
 /* ---------- closing ---------- */
-.closing { position: relative; overflow: hidden; isolation: isolate; background: var(--brown); color: var(--on-dark); padding-block: clamp(2.75rem, 5.5vw, 4.5rem); }
+.closing { position: relative; overflow: hidden; isolation: isolate; background: var(--brown); color: var(--on-dark); padding-block: clamp(2.25rem, 4.5vw, 3.5rem); }
 .closing h2 { color: var(--on-dark); font-size: var(--step-5);  font-weight: 380; max-width: 16em; letter-spacing: -0.025em; }
 .closing .eyebrow { color: var(--amber); margin-bottom: 1rem; }
 .closing p.lead { color: var(--on-dark-soft); margin-top: 1.125rem; }
@@ -406,7 +411,7 @@ button { font: inherit; color: inherit; }
 .closing__note { margin-top: 1.25rem; font-size: 0.9375rem; color: var(--on-dark-soft); }
 
 /* ---------- footer ---------- */
-.site-footer { background: var(--brown); color: var(--on-dark); border-top: 1px solid var(--line-dark); padding-block: clamp(2rem, 4vw, 3rem) 1.25rem; }
+.site-footer { background: var(--brown); color: var(--on-dark); border-top: 1px solid var(--line-dark); padding-block: clamp(1.75rem, 3.5vw, 2.6rem) 1.15rem; }
 .site-footer__grid { display: grid; gap: 1.75rem 2rem; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 .footer-brand { grid-column: 1 / -1; }
 .footer-brand img { height: 92px; width: auto; }
@@ -425,7 +430,7 @@ button { font: inherit; color: inherit; }
 }
 
 /* ---------- inner pages ---------- */
-.page-hero { position: relative; overflow: hidden; padding-block: clamp(2rem, 4.5vw, 3.5rem) clamp(2rem, 4vw, 3rem); background: linear-gradient(180deg, var(--ivory), var(--cream)); border-bottom: 1px solid var(--line); }
+.page-hero { position: relative; overflow: hidden; padding-block: clamp(1.6rem, 3.4vw, 2.75rem) clamp(1.5rem, 3vw, 2.4rem); background: linear-gradient(180deg, var(--ivory), var(--cream)); border-bottom: 1px solid var(--line); }
 .page-hero .eyebrow { margin-bottom: 1rem; }
 .page-hero h1 { font-size: var(--step-5); font-weight: 400; letter-spacing: -0.025em; line-height: 1.04; max-width: 14em; }
 .page-hero .lead { margin-top: 1.125rem; max-width: 36em; }
@@ -433,7 +438,7 @@ button { font: inherit; color: inherit; }
 @media (min-width: 900px) { .page-hero__mark { display: block; } }
 
 .block { padding-block: var(--section); }
-.block--tight { padding-block: clamp(2.25rem, 4.5vw, 3.75rem); }
+.block--tight { padding-block: clamp(1.85rem, 3.6vw, 3rem); }
 .block--cream { background: var(--cream); }
 .section-head { max-width: 40em; margin-bottom: clamp(1.25rem, 2.5vw, 2rem); }
 .section-head .eyebrow { margin-bottom: 0.875rem; }
@@ -463,10 +468,13 @@ button { font: inherit; color: inherit; }
 
 
 /* products page */
-.product-feature { display: grid; gap: clamp(2rem, 5vw, 3.5rem); align-items: center; }
+.product-feature { display: grid; gap: clamp(1.5rem, 3vw, 2.5rem); align-items: center; }
 .product-feature__copy .setu-name { font-size: clamp(3.25rem, 2.4rem + 4vw, 5.5rem); }
 .product-feature__copy h3 { margin-top: 1.25rem; max-width: 16em; }
 .product-feature__copy .prose { margin-top: 1rem; }
+.product-feature__copy .btn { margin-top: 1.5rem; }
+.page-hero .btn-row { margin-top: 1.35rem; }
+.page-hero .setu-tag { margin-top: 0.25rem; margin-bottom: 1rem; }
 .facts { margin-top: 1.5rem; display: grid; gap: 0; border-top: 1px solid var(--line-strong); max-width: 34em; }
 .facts div { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding-block: 0.7rem; border-bottom: 1px solid var(--line); }
 .facts dt { font-size: var(--step--1); font-weight: 600; letter-spacing: 0.01em; color: var(--terracotta-deep); padding-top: 0.15em; }
@@ -482,7 +490,7 @@ button { font: inherit; color: inherit; }
 @media (min-width: 760px) { .preview-points { grid-template-columns: repeat(3, 1fr); } }
 
 /* contact */
-.contact-hero { position: relative; overflow: hidden; isolation: isolate; background: var(--brown); color: var(--on-dark); padding-block: clamp(2rem, 4.5vw, 3.75rem); }
+.contact-hero { position: relative; overflow: hidden; isolation: isolate; background: var(--brown); color: var(--on-dark); padding-block: clamp(1.75rem, 3.6vw, 3.1rem); }
 .contact-hero__grid { display: grid; gap: 1.75rem 3rem; align-items: center; }
 .contact-hero .eyebrow { color: var(--amber); margin-bottom: 1rem; }
 .contact-hero h1 { color: var(--on-dark); font-size: var(--step-5); font-weight: 380; line-height: 1.04; letter-spacing: -0.025em; max-width: 12em; }
@@ -601,3 +609,35 @@ button { font: inherit; color: inherit; }
 .link-arrow:hover { border-bottom-color: var(--terracotta); }
 .link-arrow .arrow { transition: transform 0.25s var(--ease); }
 .link-arrow:hover .arrow { transform: translateX(4px); }
+
+/* ---------- breadcrumb and Setu screenshots ---------- */
+.breadcrumb { margin-bottom: 0.875rem; }
+.breadcrumb ol { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.55rem; }
+.breadcrumb li { display: inline-flex; align-items: center; gap: 0.55rem; font-size: 0.9375rem; color: var(--ink-soft); }
+.breadcrumb li + li::before { content: "/"; color: var(--ink-faint); }
+.breadcrumb a { color: var(--terracotta-deep); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb [aria-current="page"] { color: var(--ink); }
+
+.shot-row { display: grid; gap: clamp(1.25rem, 2.5vw, 1.75rem); align-items: start; }
+.shot { margin: 0; min-width: 0; }
+.shot img {
+  width: auto; max-width: 100%; max-height: 640px; height: auto; margin-inline: auto;
+  border-radius: 22px;
+  box-shadow: 0 22px 46px -28px rgba(70, 30, 8, 0.55);
+  background: #fff;
+}
+.shot figcaption { margin-top: 0.75rem; font-size: 0.9375rem; color: var(--ink-soft); }
+.manage-list { margin-top: 1.25rem; display: grid; gap: 0.75rem; }
+.manage-list div { padding: 0.9rem 1rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.manage-list dt { font-weight: 600; color: var(--ink); }
+.manage-list dd { margin: 0.2rem 0 0; color: var(--ink-soft); }
+@media (min-width: 700px) {
+  .manage-list { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 980px) {
+  .shot-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 979px) {
+  .shot-row { max-width: 440px; }
+}
